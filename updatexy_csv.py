@@ -7,7 +7,7 @@ Input_Table = r'C:\Projects\MiscTest\update_xy\SV_GPS2.csv'
 loc_dict = {}
 #iterate input table
 with arcpy.da.SearchCursor(Input_Table, ['AltID', 'Northing','Easting'])as Scurs:
-    for row in Scurs:    #for iden, lat, lon in Scurs
+    for row in Scurs:   
         #update dictionary
         loc_dict[row[0]] = (row[1], row[2])
 print loc_dict
