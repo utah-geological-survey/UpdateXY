@@ -18,6 +18,6 @@ with arcpy.da.UpdateCursor(Target_Shapefile, ['AltLocat_1', 'SHAPE@Y', 'SHAPE@X'
     for row in Tcurs:
         cur_Target_ID=row[0] #get value from dictionary if value is in dictionary
         if cur_Target_ID in loc_dict:
-            row[1]=loc_dict[cur_Target_ID][0]  #index location row[1]=SHAPE@X and row[2]=SHAPE@Y that matches index locations in dictionary
+            row[1]=loc_dict[cur_Target_ID][0]  #index location row[2]=SHAPE@X and row[1]=SHAPE@Y that matches index locations in dictionary
             row[2] = loc_dict[cur_Target_ID][1]
             Tcurs.updateRow(row)
