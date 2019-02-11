@@ -1,17 +1,15 @@
-#-------------------------------------------------------------------------------
-# Name:        module1
+
 
 import arcpy
 import os
-Target_Shapefile=r'C:\Users\npayne\AppData\Roaming\ESRI\Desktop10.6\ArcCatalog\Connection to DEFAULT@uggp.agrc.utah.gov.sde\UGGP.UGGPADMIN.UGS_NGWMN_Monitoring_Locations'
+Target_Shapefile=r'C:\Users\npayne\AppData\Roaming\ESRI\Desktop10.6\ArcCatalog\Connection to DEFAULT@uggp.agrc.utah.gov.sde\UGGP.UGGPADMIN.UGS_NGWMN_Monitoring_Locations' #Target feature class that needs XY points updated
 workspace=os.path.dirname(Target_Shapefile) #workspace path of SDE feature class
-print workspace
-Input_Table = r'C:\Projects\MiscTest\update_xy\updated_sites.shp'
+Input_Table = r'C:\Projects\MiscTest\update_xy\updated_sites.shp' #shapefile of points with updated locations 
 
 #empty dictionary
 loc_dict = {}
 #iterate input table
-with arcpy.da.SearchCursor(Input_Table, ['AltLocID', 'SHAPE@Y','SHAPE@X'])as Scurs:
+with arcpy.da.SearchCursor(Input_Table, ['AltLocID', 'SHAPE@Y','SHAPE@X'])as Scurs:  #stores id key and location info in dictionary
     for row in Scurs:    #for iden, lat, lon in Scurs
         #update dictionary
         loc_dict[row[0]] = (row[1], row[2])
